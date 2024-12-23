@@ -15,21 +15,18 @@
 #include "sl_sleeptimer.h"
 #include "FreeRTOS.h"
 #include "task.h"
-#include "stdint.h"
 
 volatile uint32_t data_buffer[100];
 volatile uint32_t index = 0;
 
 CustomAdv_t sData; // Our custom advertising data stored here
 
-//static app_timer_t update_timer;
+// static app_timer_t update_timer;
 
 static uint8_t advertising_set_handle = 0xff;
 
 uint32_t datapayload = 0x20200381;
 static char *name__Ble = "Deadline";
-
-
 
 // extern uint8_t temperature, humidity;
 
@@ -37,32 +34,31 @@ static char *name__Ble = "Deadline";
  * Application Init.
  *****************************************************************************/
 
-//static void
-//update_timer_cb(app_timer_t *timer, void *data)
+// static void
+// update_timer_cb(app_timer_t *timer, void *data)
 //{
-//  (void)data;
-//  (void)timer;
+//   (void)data;
+//   (void)timer;
 static void
-update_timer_cb(){
- while(1){
-     int temperature = data_temperature();
-      int humidity = data_humidity();
-      int periodDHT = data_periodDHT();
-      int periodADV = data_periodADV();
-      //  datapayload = 0x20200381;
-      uint8_t temperature1 = temperature / 10;
-      uint8_t temperature2 = temperature % 10;
-      uint8_t humidity1 = humidity / 10;
-      uint8_t humidity2 = humidity % 10;
+update_timer_cb()
+{
+  while (1)
+  {
+    int temperature = data_temperature();
+    int humidity = data_humidity();
+    int periodDHT = data_periodDHT();
+    int periodADV = data_periodADV();
+    //  datapayload = 0x20200381;
+    uint8_t temperature1 = temperature / 10;
+    uint8_t temperature2 = temperature % 10;
+    uint8_t humidity1 = humidity / 10;
+    uint8_t humidity2 = humidity % 10;
 
-      datapayload = ((periodDHT & 0xF) << 20) | ((periodADV & 0xF) << 16) | ((temperature1 & 0xF) << 12) | ((temperature2 & 0xF) << 8) | ((humidity1 & 0xF) << 4) | (humidity2 & 0xF);
-      update_adv_data(&sData, advertising_set_handle, datapayload);
-      vTaskDelay(pdMS_TO_TICKS(periodADV*1000));
- }
-
-//  delay_ms((periodADV - 1) * 1000);
+    datapayload = ((periodDHT & 0xF) << 20) | ((periodADV & 0xF) << 16) | ((temperature1 & 0xF) << 12) | ((temperature2 & 0xF) << 8) | ((humidity1 & 0xF) << 4) | (humidity2 & 0xF);
+    update_adv_data(&sData, advertising_set_handle, datapayload);
+    vTaskDelay(pdMS_TO_TICKS(2 * 1000));
+  }
 }
-
 
 void update_timer_task_init(void)
 {
@@ -80,29 +76,48 @@ void update_timer_task_init(void)
   EFM_ASSERT(xHandle != NULL);
 }
 
-SL_WEAK void
-app_init(void)
+SL_WEAK void app_init(void)
 {
   display_init();
   dht_init();
   uart_init();
   lcd_task_init();
   update_timer_task_init();
-//  sl_status_t sc;
-//  sc = app_timer_start(&update_timer, 1 * 1000, // ms
-//                       update_timer_cb,
-//                       NULL,
-//                       true);
-//
-//  app_assert_status(sc);
+  //  sl_status_t sc;
+  //  sc = app_timer_start(&update_timer, 2 * 1000, // ms
+  //                       update_timer_cb,
+  //                       NULL,
+  //                       true);
+  //
+  //  app_assert_status(sc);
 }
 
 /**
  * Application Process Action.
  *****************************************************************************/
-SL_WEAK void
-app_process_action(void)
+SL_WEAK void app_process_action(void)
 {
+}
+
+void sl_bl_timing_set_cb(uint16_t new_min_interval, uint16_t new_max_interval)
+{
+
+  sl_status_t sc;
+
+  sc = sl_bt_advertiser_stop(advertising_set_handle);
+  app_assert_status(sc);
+
+  sc = sl_bt_advertiser_set_timing(advertising_set_handle,
+                                   new_min_interval,
+                                   new_max_interval,
+                                   0,
+                                   0);
+  app_assert_status(sc);
+
+  sc = sl_bt_legacy_advertiser_start(
+      advertising_set_handle, sl_bt_advertiser_connectable_scannable);
+  app_assert_status(sc);
+  app_log("Advertising timing updated: min = %d, max = %d\n", new_min_interval, new_max_interval);
 }
 
 void sl_bt_on_event(sl_bt_msg_t *evt)

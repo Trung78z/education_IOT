@@ -86,18 +86,10 @@ void uart_init(void)
  * Blink task.
  ******************************************************************************/
 static uint8_t periodDHT = 1;
-static uint8_t periodADV = 1;
-int data_periodDHT()
-{
-  return periodDHT;
-}
-int data_periodADV()
-{
-  return periodADV;
-}
+static uint16_t periodADV = 1;
 
 // static const char *message = "Hello, UART!\r\n";
-//static const char *message_ok = "OK\r\n";
+// static const char *message_ok = "OK\r\n";
 void handle_command(uint8_t *command)
 {
 
@@ -106,7 +98,7 @@ void handle_command(uint8_t *command)
   case '0':
     periodDHT = 1;
     char messagecase0[100];
-  sprintf(messagecase0, "OK, periodDHT: %d\r\n", periodDHT);
+    sprintf(messagecase0, "OK, periodDHT: %d\r\n", periodDHT);
     for (size_t i = 0; i < strlen(messagecase0); i++)
     {
       while (!(USART0->STATUS & USART_STATUS_TXBL))
@@ -120,14 +112,17 @@ void handle_command(uint8_t *command)
     break;
   case '1':
 
-    if (periodDHT >= 15) {
-        periodDHT = 1;
-    } else {
-        periodDHT++;
+    if (periodDHT >= 15)
+    {
+      periodDHT = 1;
+    }
+    else
+    {
+      periodDHT++;
     }
 
     char messagecase1[100];
-   sprintf(messagecase1, "OK, periodDHT: %d\r\n", periodDHT);
+    sprintf(messagecase1, "OK, periodDHT: %d\r\n", periodDHT);
     for (size_t i = 0; i < strlen(messagecase1); i++)
     {
       while (!(USART0->STATUS & USART_STATUS_TXBL))
@@ -141,10 +136,10 @@ void handle_command(uint8_t *command)
     break;
 
   case '2':
-
     periodADV = 1;
     char messagecase2[100];
     sprintf(messagecase2, "OK, periodADV: %d\r\n", periodADV);
+    sl_bl_timing_set_cb(periodADV * 1600, periodADV * 1600);
     for (size_t i = 0; i < strlen(messagecase2); i++)
     {
       while (!(USART0->STATUS & USART_STATUS_TXBL))
@@ -158,10 +153,15 @@ void handle_command(uint8_t *command)
     break;
 
   case '3':
-    if (periodADV >= 15) {
-        periodADV = 1;
-    } else {
-        periodADV++;
+    if (periodADV >= 15)
+    {
+      periodADV = 1;
+      sl_bl_timing_set_cb(periodADV * 1600, periodADV * 1600);
+    }
+    else
+    {
+      periodADV++;
+      sl_bl_timing_set_cb(periodADV * 1600, periodADV * 1600);
     }
     char messagecase3[100];
     sprintf(messagecase3, "OK, periodADV: %d\r\n", periodADV);
@@ -209,6 +209,7 @@ static void uart_task(void *arg)
 
   while (1)
   {
+
     while (!(USART0->STATUS & USART_STATUS_RXDATAV))
     {
     }
@@ -216,4 +217,13 @@ static void uart_task(void *arg)
 
     handle_command(command);
   }
+}
+
+int data_periodDHT()
+{
+  return periodDHT;
+}
+int data_periodADV()
+{
+  return periodADV;
 }
