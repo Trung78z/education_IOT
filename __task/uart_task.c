@@ -139,7 +139,7 @@ void handle_command(uint8_t *command)
     periodADV = 1;
     char messagecase2[100];
     sprintf(messagecase2, "OK, periodADV: %d\r\n", periodADV);
-    sl_bl_timing_set_cb(periodADV * 1600, periodADV * 1600);
+    sl_bl_timing_set_cb(periodADV * 800, periodADV * 800);
     for (size_t i = 0; i < strlen(messagecase2); i++)
     {
       while (!(USART0->STATUS & USART_STATUS_TXBL))
@@ -153,15 +153,15 @@ void handle_command(uint8_t *command)
     break;
 
   case '3':
-    if (periodADV >= 15)
+    if (periodADV >= 12)
     {
-      periodADV = 1;
-      sl_bl_timing_set_cb(periodADV * 1600, periodADV * 1600);
+      periodADV = 12;
+      sl_bl_timing_set_cb(periodADV * 800, periodADV * 800);
     }
     else
     {
       periodADV++;
-      sl_bl_timing_set_cb(periodADV * 1600, periodADV * 1600);
+      sl_bl_timing_set_cb(periodADV * 800, periodADV * 800);
     }
     char messagecase3[100];
     sprintf(messagecase3, "OK, periodADV: %d\r\n", periodADV);
