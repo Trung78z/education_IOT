@@ -82,7 +82,7 @@ SL_WEAK void app_init(void)
   dht_init();
   uart_init();
   lcd_task_init();
-  //  update_ble_task_init();
+    update_ble_task_init();
   //  sl_status_t sc;
   //  sc = app_timer_start(&update_timer, 2 * 1000, // ms
   //                       update_timer_cb,
