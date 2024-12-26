@@ -32,8 +32,6 @@
 #ifndef APP_H
 #define APP_H
 
-
-
 #include "stdint.h"
 /**************************************************************************/
 /**
@@ -47,5 +45,5 @@ void app_init(void);
  *****************************************************************************/
 void app_process_action(void);
 void sl_bl_timing_set_cb(uint16_t new_min_interval, uint16_t new_max_interval);
-
+void updateName(char *name);
 #endif // APP_H

@@ -26,7 +26,7 @@ CustomAdv_t sData; // Our custom advertising data stored here
 static uint8_t advertising_set_handle = 0xff;
 
 uint32_t datapayload = 0x20200381;
-static char *name__Ble = "MaiLy";
+extern char *name__Ble;
 
 // extern uint8_t temperature, humidity;
 
@@ -97,6 +97,20 @@ SL_WEAK void app_init(void)
  *****************************************************************************/
 SL_WEAK void app_process_action(void)
 {
+}
+void updateName(char *name)
+{
+  sl_status_t sc;
+
+  sc = sl_bt_advertiser_stop(advertising_set_handle);
+  app_assert_status(sc);
+
+  fill_adv_packet(&sData, FLAG, COMPANY_ID, datapayload, name);
+  start_adv(&sData, advertising_set_handle);
+  app_log("BLE name updated to: %s\r\n", name__Ble);
+  sc = sl_bt_legacy_advertiser_start(
+      advertising_set_handle, sl_bt_advertiser_connectable_scannable);
+  app_assert_status(sc);
 }
 
 void sl_bl_timing_set_cb(uint16_t new_min_interval, uint16_t new_max_interval)
