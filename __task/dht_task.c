@@ -29,13 +29,16 @@
 #define BSP_GPIO_DHT_PORT gpioPortD
 #define BSP_GPIO_DHT_PIN 3
 
+#define BSP_GPIO_LED0_PORT gpioPortD
+#define BSP_GPIO_LED0_PIN 2
+
 static int temperature;
 static int humidity;
 
-
- static void gpio_init()
+static void gpio_init()
 {
   CMU_ClockEnable(cmuClock_GPIO, true);
+  GPIO_PinModeSet(BSP_GPIO_LED0_PORT, BSP_GPIO_LED0_PIN, gpioModePushPull, 0);
 }
 static void
 dht_task(void *arg);
@@ -68,7 +71,7 @@ dht_task(void *arg)
   while (1)
   {
     // Wait for specified delay
-      int periodDHT= data_periodDHT();
+    int periodDHT = data_periodDHT();
     reading = DHT11_read();
     if (reading.status == DHT11_OK)
     {
@@ -77,17 +80,13 @@ dht_task(void *arg)
     }
     else if (reading.status == DHT11_CRC_ERROR)
     {
-      app_log("\nCheck sum error");
-      temperature =0;
-       humidity =0;
+      // app_log("\nCheck sum error");
     }
     else
     {
       app_log("\nTIMEROUT");
-      temperature =0;
-      humidity = 0;
     }
-    vTaskDelay(pdMS_TO_TICKS(periodDHT*1000));
+    vTaskDelay(pdMS_TO_TICKS(periodDHT * 1000));
   }
 }
 int data_temperature()
