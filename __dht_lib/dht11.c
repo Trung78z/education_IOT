@@ -122,18 +122,24 @@ struct dht11_reading DHT11_read()
   for (int i = 0; i < 40; i++)
   {
     // Chờ đầu xung
-    if (_waitOrTimeout(65, 0) == DHT11_TIMEOUT_ERROR)
+    // if (_waitOrTimeout(65, 0) == DHT11_TIMEOUT_ERROR)
+    //   return last_read = _timeoutError();
+
+    timeOut = 0;
+    while (!GPIO_PinInGet(dht_gpio_port, dht_gpio_pin) && timeOut++ < 88)
+      delay_us(1);
+    if (timeOut >= 88)
       return last_read = _timeoutError();
 
-    delay_us(28); // Delay để đọc bit
+    delay_us(30); // Delay để đọc bit
 
     if (GPIO_PinInGet(dht_gpio_port, dht_gpio_pin)) // Nếu chân ở mức cao
       data[i / 8] |= (1 << (7 - (i % 8)));
 
     timeOut = 0;
-    while (GPIO_PinInGet(dht_gpio_port, dht_gpio_pin) && timeOut++ < 100)
+    while (GPIO_PinInGet(dht_gpio_port, dht_gpio_pin) && timeOut++ < 88)
       delay_us(1);
-    if (timeOut >= 100)
+    if (timeOut >= 88)
       return last_read = _timeoutError();
   }
 
