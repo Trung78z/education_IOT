@@ -122,7 +122,6 @@ struct dht11_reading DHT11_read()
   for (int i = 0; i < 40; i++)
   {
     // Chờ đầu xung
-<<<<<<< HEAD
     // if (_waitOrTimeout(65, 0) == DHT11_TIMEOUT_ERROR)
     //   return last_read = _timeoutError();
 
@@ -130,12 +129,10 @@ struct dht11_reading DHT11_read()
     while (!GPIO_PinInGet(dht_gpio_port, dht_gpio_pin) && timeOut++ < 88)
       delay_us(1);
     if (timeOut >= 88)
-=======
     timeOut = 0;
     while (!GPIO_PinInGet(dht_gpio_port, dht_gpio_pin) && timeOut++ < 100)
       delay_us(1);
     if (timeOut >= 100)
->>>>>>> lyaddtask
       return last_read = _timeoutError();
 
     delay_us(30); // Delay để đọc bit
@@ -143,15 +140,11 @@ struct dht11_reading DHT11_read()
     if (GPIO_PinInGet(dht_gpio_port, dht_gpio_pin)) // Nếu chân ở mức cao
       data[i / 8] |= (1 << (7 - (i % 8)));
 
-<<<<<<< HEAD
     timeOut = 0;
     while (GPIO_PinInGet(dht_gpio_port, dht_gpio_pin) && timeOut++ < 88)
       delay_us(1);
     if (timeOut >= 88)
       return last_read = _timeoutError();
-=======
-
->>>>>>> lyaddtask
   }
 
   // 4. Kiểm tra checksum
