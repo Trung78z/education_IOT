@@ -26,7 +26,7 @@ CustomAdv_t sData; // Our custom advertising data stored here
 static uint8_t advertising_set_handle = 0xff;
 
 uint32_t datapayload = 0x20200381;
-static char *name__Ble = "Deadline";
+static char *name__Ble = "MaiLy";
 
 // extern uint8_t temperature, humidity;
 
