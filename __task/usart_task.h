@@ -9,6 +9,8 @@
 #define USART_TASK_H_
 
 void usart_init(void);
+void init_USART0(void);
+void init_USART_GPIO(void);
 void send_usart_data(const char *data);
 int data_periodDHT();
 int data_periodADV();

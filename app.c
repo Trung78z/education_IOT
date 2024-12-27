@@ -16,8 +16,6 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
-volatile uint32_t data_buffer[100];
-volatile uint32_t index = 0;
 
 CustomAdv_t sData; // Our custom advertising data stored here
 
@@ -140,9 +138,7 @@ void sl_bl_timing_set_cb(uint16_t new_min_interval, uint16_t new_max_interval)
       advertising_set_handle, sl_bt_advertiser_connectable_scannable);
   app_assert_status(sc);
 
-  char response[64];
-  snprintf(response, sizeof(response), "Advertising timing updated: min = %d, max = %d\n", new_min_interval, new_max_interval);
-  send_usart_data(response);
+
 }
 
 void sl_bt_on_event(sl_bt_msg_t *evt)

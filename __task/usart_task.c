@@ -61,39 +61,6 @@ void usart_init(void)
   EFM_ASSERT(xHandle != NULL);
   // xTaskCreate(usart_task, "USART Task", UART_STACK_SIZE, NULL, 5, NULL);
 }
-void initGPIO(void)
-{
-  //  CMU_ClockEnable(cmuClock_USART0, true);
-  GPIO_PinModeSet(BSP_TXPORT, BSP_TXPIN, gpioModePushPull, 1);
-  GPIO_PinModeSet(BSP_RXPORT, BSP_RXPIN, gpioModeInput, 0);
-  GPIO_PinModeSet(BSP_ENABLE_PORT, BSP_ENABLE_PIN, gpioModePushPull, 1);
-}
-void initUSART0(void)
-{
-  USART_InitAsync_TypeDef init;
-
-  init.enable = usartEnable;
-  init.refFreq = 0;
-  init.baudrate = BAUD_RATE;
-  init.oversampling = usartOVS16;
-  init.databits = usartDatabits8;
-  init.parity = USART_FRAME_PARITY_NONE;
-  init.stopbits = usartStopbits1;
-  init.mvdis = false;
-  init.prsRxEnable = false;
-  init.prsRxCh = 0;
-  init.autoCsEnable = false;
-  init.csInv = false;
-  init.autoCsHold = 0;
-  init.autoCsSetup = 0;
-  init.hwFlowControl = usartHwFlowControlNone;
-
-  GPIO->USARTROUTE[0].TXROUTE = (BSP_TXPORT << _GPIO_USART_TXROUTE_PORT_SHIFT) | (BSP_TXPIN << _GPIO_USART_TXROUTE_PIN_SHIFT);
-  GPIO->USARTROUTE[0].RXROUTE = (BSP_RXPORT << _GPIO_USART_RXROUTE_PORT_SHIFT) | (BSP_RXPIN << _GPIO_USART_RXROUTE_PIN_SHIFT);
-
-  GPIO->USARTROUTE[0].ROUTEEN = GPIO_USART_ROUTEEN_RXPEN | GPIO_USART_ROUTEEN_TXPEN;
-  USART_InitAsync(USART0, &init);
-}
 void send_usart_data(const char *data)
 {
   for (size_t i = 0; i < strlen(data); i++)
@@ -281,4 +248,38 @@ int data_periodDHT()
 int data_periodADV()
 {
   return periodADV;
+}
+
+void init_USART_GPIO(void)
+{
+  //  CMU_ClockEnable(cmuClock_USART0, true);
+  GPIO_PinModeSet(BSP_TXPORT, BSP_TXPIN, gpioModePushPull, 1);
+  GPIO_PinModeSet(BSP_RXPORT, BSP_RXPIN, gpioModeInput, 0);
+  GPIO_PinModeSet(BSP_ENABLE_PORT, BSP_ENABLE_PIN, gpioModePushPull, 1);
+}
+void init_USART0(void)
+{
+  USART_InitAsync_TypeDef init;
+
+  init.enable = usartEnable;
+  init.refFreq = 0;
+  init.baudrate = BAUD_RATE;
+  init.oversampling = usartOVS16;
+  init.databits = usartDatabits8;
+  init.parity = USART_FRAME_PARITY_NONE;
+  init.stopbits = usartStopbits1;
+  init.mvdis = false;
+  init.prsRxEnable = false;
+  init.prsRxCh = 0;
+  init.autoCsEnable = false;
+  init.csInv = false;
+  init.autoCsHold = 0;
+  init.autoCsSetup = 0;
+  init.hwFlowControl = usartHwFlowControlNone;
+
+  GPIO->USARTROUTE[0].TXROUTE = (BSP_TXPORT << _GPIO_USART_TXROUTE_PORT_SHIFT) | (BSP_TXPIN << _GPIO_USART_TXROUTE_PIN_SHIFT);
+  GPIO->USARTROUTE[0].RXROUTE = (BSP_RXPORT << _GPIO_USART_RXROUTE_PORT_SHIFT) | (BSP_RXPIN << _GPIO_USART_RXROUTE_PIN_SHIFT);
+
+  GPIO->USARTROUTE[0].ROUTEEN = GPIO_USART_ROUTEEN_RXPEN | GPIO_USART_ROUTEEN_TXPEN;
+  USART_InitAsync(USART0, &init);
 }
