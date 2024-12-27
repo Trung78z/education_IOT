@@ -61,8 +61,8 @@ static void lcd_task(void *arg)
   {
     int periodDHT = data_periodDHT();
     int periodADV = data_periodADV();
-    int temperature = data_temperature();
-    int humidity = data_humidity();
+    float temperature = data_temperature();
+    float humidity = data_humidity();
     memlcd_dht_app_init(temperature, humidity);
 
     updateClock();

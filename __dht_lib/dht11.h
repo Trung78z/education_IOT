@@ -20,8 +20,8 @@ enum dht11_final_status
 struct dht11_reading
 {
     int status;
-    int temperature;
-    int humidity;
+    float temperature;
+    float humidity;
 };
 
 void DHT11_init(GPIO_Port_TypeDef port,

@@ -1,21 +1,3 @@
-/***************************************************************************/
-/**
- * @file
- * @brief Blink examples functions
- *******************************************************************************
- * # License
- * <b>Copyright 2020 Silicon Laboratories Inc. www.silabs.com</b>
- *******************************************************************************
- *
- * The licensor of this software is Silicon Laboratories Inc. Your use of this
- * software is governed by the terms of Silicon Labs Master Software License
- * Agreement (MSLA) available at
- * www.silabs.com/about-us/legal/master-software-license-agreement. This
- * software is distributed to you in Source Code format and is governed by the
- * sections of the MSLA applicable to Source Code.
- *
- ******************************************************************************/
-
 #include <__task/usart_task.h>
 #include "FreeRTOS.h"
 #include "task.h"
@@ -32,8 +14,8 @@
 #define BSP_GPIO_LED0_PORT gpioPortD
 #define BSP_GPIO_LED0_PIN 2
 
-static int temperature;
-static int humidity;
+static float temperature;
+static float humidity;
 
 static void gpio_init()
 {
@@ -93,11 +75,11 @@ dht_task(void *arg)
     vTaskDelay(pdMS_TO_TICKS(periodDHT * 1000));
   }
 }
-int data_temperature()
+float data_temperature()
 {
   return temperature;
 }
-int data_humidity()
+float data_humidity()
 {
   return humidity;
 }

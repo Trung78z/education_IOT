@@ -20,20 +20,9 @@
 #define LCD_MAX_LINES 11
 #endif
 
-/*******************************************************************************
- ***************************  LOCAL VARIABLES   ********************************
- ******************************************************************************/
+
 static GLIB_Context_t glibContext;
 static int currentLine = 0;
-
-/*******************************************************************************
- **************************   GLOBAL FUNCTIONS   *******************************
- ******************************************************************************/
-
-/***************************************************************************/
-/**
- * Initialize example.
- ******************************************************************************/
 
 void display_init(void)
 {
@@ -95,11 +84,11 @@ void memlcd_app_init(int hours, int minutes, int seconds)
   DMD_updateDisplay();
 }
 
-void memlcd_dht_app_init(uint8_t temperature, uint8_t humidity)
+void memlcd_dht_app_init(float temperature, float humidity)
 {
 
-  char timeString[24];
-  sprintf(timeString, "Temp: %d - Humid: %d", temperature, humidity);
+  char timeString[26];
+  sprintf(timeString, "Temp: %.2f - Humid: %.2f", temperature, humidity);
 
   GLIB_drawStringOnLine(&glibContext, timeString, 9, GLIB_ALIGN_LEFT,
                         5, 5,

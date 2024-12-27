@@ -23,7 +23,7 @@ CustomAdv_t sData; // Our custom advertising data stored here
 static uint8_t advertising_set_handle = 0xff;
 
 uint32_t datapayload = 0x20200381;
-extern char *name__Ble;
+static char *name__Ble = "GROUP_13";
 
 // extern uint8_t temperature, humidity;
 
@@ -41,17 +41,26 @@ update_timer_cb()
 {
   while (1)
   {
-    int temperature = data_temperature();
-    int humidity = data_humidity();
+    float temperature = data_temperature();
+    float humidity = data_humidity();
     int periodDHT = data_periodDHT();
     int periodADV = data_periodADV();
     //  datapayload = 0x20200381;
-    uint8_t temperature1 = temperature / 10;
-    uint8_t temperature2 = temperature % 10;
-    uint8_t humidity1 = humidity / 10;
-    uint8_t humidity2 = humidity % 10;
 
-    datapayload = ((periodDHT & 0xF) << 20) | ((periodADV & 0xF) << 16) | ((temperature1 & 0xF) << 12) | ((temperature2 & 0xF) << 8) | ((humidity1 & 0xF) << 4) | (humidity2 & 0xF);
+    uint8_t temperature1 = (uint8_t)(temperature) / 10;
+    uint8_t temperature2 = (uint8_t)(temperature) % 10;
+    uint8_t temperature3 = (uint8_t)((temperature - temperature1) * 10);
+    uint8_t humidity1 = (uint8_t)(humidity) / 10;
+    uint8_t humidity2 = (uint8_t)(humidity) % 10;
+    uint8_t humidity3 = (uint8_t)((humidity - humidity1) * 10);
+
+    temperature1 &= 0xF;
+    temperature2 &= 0xF;
+    temperature3 &= 0xF;
+    humidity1 &= 0xF;
+    humidity2 &= 0xF;
+    humidity3 &= 0xF;
+    datapayload = ((periodDHT & 0xF) << 28) | ((periodADV & 0xF) << 24) | (temperature3 << 20) | (temperature2 << 16) | (temperature3 << 12) | (humidity1 << 8) | (humidity2 << 4) | humidity3;
     update_adv_data(&sData, advertising_set_handle, datapayload);
     vTaskDelay(pdMS_TO_TICKS(2 * 1000));
   }
@@ -111,7 +120,7 @@ void updateName(char *name)
   start_adv(&sData, advertising_set_handle);
 
   char response[255];
-  snprintf(response, sizeof(response), "BLE name updated to: %s\r\n", name__Ble);
+  snprintf(response, sizeof(response), "BLE name updated to: %s\r\n", name);
   send_usart_data(response);
   sc = sl_bt_legacy_advertiser_start(
       advertising_set_handle, sl_bt_advertiser_connectable_scannable);
@@ -127,8 +136,8 @@ void sl_bl_timing_set_cb(uint16_t new_min_interval, uint16_t new_max_interval)
   app_assert_status(sc);
 
   sc = sl_bt_advertiser_set_timing(advertising_set_handle,
-                                   new_min_interval,
-                                   new_max_interval,
+                                   new_min_interval * 1.6,
+                                   new_max_interval * 1.6,
                                    0,
                                    0);
   app_assert_status(sc);
@@ -138,7 +147,7 @@ void sl_bl_timing_set_cb(uint16_t new_min_interval, uint16_t new_max_interval)
   app_assert_status(sc);
 
   char response[255];
-  snprintf(response, sizeof(response), "Advertising timing updated: min = %.f, max = %.f\r\n",  new_min_interval/1.6, new_max_interval/1.6);
+  snprintf(response, sizeof(response), "Advertising timing updated: min = %d, max = %d\r\n", new_min_interval, new_max_interval);
   send_usart_data(response);
 }
 

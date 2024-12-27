@@ -10,8 +10,7 @@
 #include <stdint.h>
 void
 memlcd_app_init (int hours, int minutes, int seconds);
-void
-memlcd_dht_app_init (uint8_t temperature, uint8_t humidity);
+void memlcd_dht_app_init(float temperature, float humidity);
 void
 display_init (void);
 

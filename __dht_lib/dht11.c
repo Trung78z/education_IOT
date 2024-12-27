@@ -110,15 +110,10 @@ struct dht11_reading DHT11_read()
   uint8_t data[5] =
       {0, 0, 0, 0, 0};
   uint32_t timeOut = 0;
-
-  // 1. Gửi tín hiệu khởi động
   _sendStartSignal();
-  // 2. Chờ phản hồi từ DHT11
-
   if (_checkResponse() == DHT11_TIMEOUT_ERROR)
     return last_read = _timeoutError();
 
-  // 3. Đọc dữ liệu 40-bit
   for (int i = 0; i < 40; i++)
   {
     // Chờ đầu xung
@@ -137,12 +132,11 @@ struct dht11_reading DHT11_read()
       return last_read = _timeoutError();
   }
 
-  // 4. Kiểm tra checksum
   if (_checkCRC(data) != DHT11_CRC_ERROR)
   {
     last_read.status = DHT11_OK;
-    last_read.temperature = data[2];
-    last_read.humidity = data[0];
+    last_read.temperature = (float)data[2] + ((float)data[3] / 10.0);
+    last_read.humidity = (float)data[0] + ((float)data[1] / 10.0);
     return last_read;
   }
   else
