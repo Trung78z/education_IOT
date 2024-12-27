@@ -227,8 +227,8 @@ void handle_command(uint8_t *command)
 static void usart_task(void *arg)
 {
   (void)arg;
-  initGPIO();
-  initUSART0();
+  init_USART_GPIO();
+  init_USART0();
   send_usart_data("\nStarted\n");
   uint8_t command[1];
   while (1)
