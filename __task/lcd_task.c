@@ -5,11 +5,11 @@
  *      Author: Trung
  */
 
+#include <__task/usart_task.h>
 #include "lcd_task.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "___spi_lcd/app_lcd.h"
-#include "uart_task.h"
 #include "dht_task.h"
 #define LCD_STACK_SIZE 2048
 
