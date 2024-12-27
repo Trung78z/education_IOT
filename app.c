@@ -138,7 +138,7 @@ void sl_bl_timing_set_cb(uint16_t new_min_interval, uint16_t new_max_interval)
   app_assert_status(sc);
 
   char response[255];
-  snprintf(response, sizeof(response), "Advertising timing updated: min = %d, max = %d\r\n",  new_min_interval, new_max_interval);
+  snprintf(response, sizeof(response), "Advertising timing updated: min = %d, max = %d\r\n", new_min_interval, new_max_interval);
   send_usart_data(response);
 }
 
