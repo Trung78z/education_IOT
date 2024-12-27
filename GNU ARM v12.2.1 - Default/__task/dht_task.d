@@ -64,32 +64,12 @@ __task/dht_task.o: ../__task/dht_task.c \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\freertos\kernel\include\mpu_wrappers.h \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\freertos\kernel\include\task.h \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\freertos\kernel\include\list.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\app\common\util\app_log\app_log.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\iostream\inc\sl_iostream.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_enum.h \
- D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\autogen/sl_iostream_handles.h \
- D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\autogen/sl_iostream_init_usart_instances.h \
- D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\autogen/sl_component_catalog.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\power_manager\inc\sl_power_manager.h \
- D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/sl_power_manager_config.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_slist.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\sleeptimer\inc\sl_sleeptimer.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_common.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_assert.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_code_classification.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\iostream\inc\sl_iostream_uart.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\iostream\inc\sl_iostream.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\dmadrv\inc\dmadrv.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\common\inc\ecode.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\dmadrv\inc\s2_signals\dmadrv_signals.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emlib\inc\em_ldma.h \
- D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/dmadrv_config.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\cmsis\rtos2\include\cmsis_os2.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_cmsis_os2_common.h \
- D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/app_log_config.h \
  D:\learn\TH\ IoT\ 2024\on_class\___project_all_source/__dht_lib/dht11.h \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emlib\inc\em_gpio.h \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emlib\inc\em_bus.h \
+ e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_common.h \
+ e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_assert.h \
+ e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_enum.h \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emlib\inc\em_cmu.h \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emlib\inc\em_cmu_compat.h \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emlib\inc\em_gpio.h \
@@ -160,32 +140,12 @@ e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\freertos\kernel\po
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\freertos\kernel\include\mpu_wrappers.h:
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\freertos\kernel\include\task.h:
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\freertos\kernel\include\list.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\app\common\util\app_log\app_log.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\iostream\inc\sl_iostream.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_enum.h:
-D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\autogen/sl_iostream_handles.h:
-D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\autogen/sl_iostream_init_usart_instances.h:
-D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\autogen/sl_component_catalog.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\power_manager\inc\sl_power_manager.h:
-D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/sl_power_manager_config.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_slist.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\sleeptimer\inc\sl_sleeptimer.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_common.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_assert.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_code_classification.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\iostream\inc\sl_iostream_uart.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\iostream\inc\sl_iostream.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\dmadrv\inc\dmadrv.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\common\inc\ecode.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\dmadrv\inc\s2_signals\dmadrv_signals.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emlib\inc\em_ldma.h:
-D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/dmadrv_config.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\cmsis\rtos2\include\cmsis_os2.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_cmsis_os2_common.h:
-D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/app_log_config.h:
 D:\learn\TH\ IoT\ 2024\on_class\___project_all_source/__dht_lib/dht11.h:
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emlib\inc\em_gpio.h:
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emlib\inc\em_bus.h:
+e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_common.h:
+e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_assert.h:
+e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_enum.h:
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emlib\inc\em_cmu.h:
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emlib\inc\em_cmu_compat.h:
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emlib\inc\em_gpio.h:

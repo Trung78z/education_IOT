@@ -23,7 +23,6 @@ __task \
 . \
 autogen \
 simplicity_sdk_2024.6.2/app/bluetooth/common/in_place_ota_dfu \
-simplicity_sdk_2024.6.2/app/common/util/app_log \
 simplicity_sdk_2024.6.2/app/common/util/app_timer/freertos \
 simplicity_sdk_2024.6.2/hardware/board/src \
 simplicity_sdk_2024.6.2/hardware/driver/configuration_over_swo/src \
@@ -33,7 +32,6 @@ simplicity_sdk_2024.6.2/platform/bootloader/api \
 simplicity_sdk_2024.6.2/platform/bootloader/app_properties \
 simplicity_sdk_2024.6.2/platform/common/src \
 simplicity_sdk_2024.6.2/platform/driver/debug/src \
-simplicity_sdk_2024.6.2/platform/emdrv/dmadrv/src \
 simplicity_sdk_2024.6.2/platform/emdrv/nvm3/src \
 simplicity_sdk_2024.6.2/platform/emlib/src \
 simplicity_sdk_2024.6.2/platform/radio/rail_lib/plugin/pa-conversions \
@@ -48,7 +46,6 @@ simplicity_sdk_2024.6.2/platform/service/clock_manager/src \
 simplicity_sdk_2024.6.2/platform/service/device_manager/devices \
 simplicity_sdk_2024.6.2/platform/service/device_manager/src \
 simplicity_sdk_2024.6.2/platform/service/interrupt_manager/src \
-simplicity_sdk_2024.6.2/platform/service/iostream/src \
 simplicity_sdk_2024.6.2/platform/service/memory_manager/profiler/src \
 simplicity_sdk_2024.6.2/platform/service/memory_manager/src \
 simplicity_sdk_2024.6.2/platform/service/mpu/src \

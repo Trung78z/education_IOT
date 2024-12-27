@@ -139,16 +139,6 @@
 			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sl_status.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.6.2/platform/common/inc/sl_string.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sl_string.h</locationURI>
-		</link>
-		<link>
-			<name>simplicity_sdk_2024.6.2/platform/common/inc/sli_cmsis_os2_ext_task_register.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sli_cmsis_os2_ext_task_register.h</locationURI>
-		</link>
-		<link>
 			<name>simplicity_sdk_2024.6.2/platform/common/inc/sli_code_classification.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sli_code_classification.h</locationURI>
@@ -169,19 +159,9 @@
 			<locationURI>STUDIO_SDK_LOC/platform/common/src/sl_slist.c</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.6.2/platform/common/src/sl_string.c</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/common/src/sl_string.c</locationURI>
-		</link>
-		<link>
 			<name>simplicity_sdk_2024.6.2/platform/common/src/sl_syscalls.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/src/sl_syscalls.c</locationURI>
-		</link>
-		<link>
-			<name>simplicity_sdk_2024.6.2/platform/common/src/sli_cmsis_os2_ext_task_register.c</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/common/src/sli_cmsis_os2_ext_task_register.c</locationURI>
 		</link>
 		<link>
 			<name>simplicity_sdk_2024.6.2/platform/emlib/inc/em_acmp.h</name>
@@ -654,21 +634,6 @@
 			<locationURI>STUDIO_SDK_LOC/app/common/util/app_assert/sl_app_assert.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.6.2/app/common/util/app_log/app_log.c</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/app/common/util/app_log/app_log.c</locationURI>
-		</link>
-		<link>
-			<name>simplicity_sdk_2024.6.2/app/common/util/app_log/app_log.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/app/common/util/app_log/app_log.h</locationURI>
-		</link>
-		<link>
-			<name>simplicity_sdk_2024.6.2/app/common/util/app_log/sl_app_log.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/app/common/util/app_log/sl_app_log.h</locationURI>
-		</link>
-		<link>
 			<name>simplicity_sdk_2024.6.2/app/common/util/app_timer/app_timer.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/app/common/util/app_timer/app_timer.h</locationURI>
@@ -762,16 +727,6 @@
 			<name>simplicity_sdk_2024.6.2/platform/emdrv/common/inc/ecode.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emdrv/common/inc/ecode.h</locationURI>
-		</link>
-		<link>
-			<name>simplicity_sdk_2024.6.2/platform/emdrv/dmadrv/inc/dmadrv.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/emdrv/dmadrv/inc/dmadrv.h</locationURI>
-		</link>
-		<link>
-			<name>simplicity_sdk_2024.6.2/platform/emdrv/dmadrv/src/dmadrv.c</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/emdrv/dmadrv/src/dmadrv.c</locationURI>
 		</link>
 		<link>
 			<name>simplicity_sdk_2024.6.2/platform/emdrv/nvm3/inc/nvm3.h</name>
@@ -932,56 +887,6 @@
 			<name>simplicity_sdk_2024.6.2/platform/service/interrupt_manager/src/sli_interrupt_manager.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/service/interrupt_manager/src/sli_interrupt_manager.h</locationURI>
-		</link>
-		<link>
-			<name>simplicity_sdk_2024.6.2/platform/service/iostream/inc/sl_iostream.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/service/iostream/inc/sl_iostream.h</locationURI>
-		</link>
-		<link>
-			<name>simplicity_sdk_2024.6.2/platform/service/iostream/inc/sl_iostream_stdlib_config.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/service/iostream/inc/sl_iostream_stdlib_config.h</locationURI>
-		</link>
-		<link>
-			<name>simplicity_sdk_2024.6.2/platform/service/iostream/inc/sl_iostream_uart.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/service/iostream/inc/sl_iostream_uart.h</locationURI>
-		</link>
-		<link>
-			<name>simplicity_sdk_2024.6.2/platform/service/iostream/inc/sl_iostream_usart.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/service/iostream/inc/sl_iostream_usart.h</locationURI>
-		</link>
-		<link>
-			<name>simplicity_sdk_2024.6.2/platform/service/iostream/inc/sli_iostream_uart.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/service/iostream/inc/sli_iostream_uart.h</locationURI>
-		</link>
-		<link>
-			<name>simplicity_sdk_2024.6.2/platform/service/iostream/src/sl_iostream.c</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/service/iostream/src/sl_iostream.c</locationURI>
-		</link>
-		<link>
-			<name>simplicity_sdk_2024.6.2/platform/service/iostream/src/sl_iostream_retarget_stdio.c</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/service/iostream/src/sl_iostream_retarget_stdio.c</locationURI>
-		</link>
-		<link>
-			<name>simplicity_sdk_2024.6.2/platform/service/iostream/src/sl_iostream_stdlib_config.c</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/service/iostream/src/sl_iostream_stdlib_config.c</locationURI>
-		</link>
-		<link>
-			<name>simplicity_sdk_2024.6.2/platform/service/iostream/src/sl_iostream_uart.c</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/service/iostream/src/sl_iostream_uart.c</locationURI>
-		</link>
-		<link>
-			<name>simplicity_sdk_2024.6.2/platform/service/iostream/src/sl_iostream_usart.c</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/service/iostream/src/sl_iostream_usart.c</locationURI>
 		</link>
 		<link>
 			<name>simplicity_sdk_2024.6.2/platform/service/memory_manager/inc/sl_memory_manager.h</name>
@@ -1772,11 +1677,6 @@
 			<name>simplicity_sdk_2024.6.2/platform/Device/SiliconLabs/EFR32MG21/Source/system_efr32mg21.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/Device/SiliconLabs/EFR32MG21/Source/system_efr32mg21.c</locationURI>
-		</link>
-		<link>
-			<name>simplicity_sdk_2024.6.2/platform/emdrv/dmadrv/inc/s2_signals/dmadrv_signals.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/emdrv/dmadrv/inc/s2_signals/dmadrv_signals.h</locationURI>
 		</link>
 		<link>
 			<name>simplicity_sdk_2024.6.2/platform/radio/rail_lib/autogen/librail_release/librail_efr32xg21_gcc_release.a</name>

@@ -96,40 +96,12 @@ autogen/sl_event_handler.o: ../autogen/sl_event_handler.c \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\sleeptimer\inc\sl_sleeptimer.h \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_code_classification.h \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\mpu\inc\sl_mpu.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\app\common\util\app_log\app_log.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\iostream\inc\sl_iostream.h \
- D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\autogen/sl_iostream_handles.h \
- D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\autogen/sl_iostream_init_usart_instances.h \
- D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\autogen/sl_component_catalog.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\power_manager\inc\sl_power_manager.h \
- D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/sl_power_manager_config.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_slist.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\iostream\inc\sl_iostream_uart.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\iostream\inc\sl_iostream.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\dmadrv\inc\dmadrv.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\common\inc\ecode.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\dmadrv\inc\s2_signals\dmadrv_signals.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emlib\inc\em_ldma.h \
- D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/dmadrv_config.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\cmsis\rtos2\include\cmsis_os2.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_cmsis_os2_common.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\freertos\kernel\include\freertos.h \
- D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/FreeRTOSConfig.h \
- D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\autogen/RTE_Components.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emlib\inc\em_assert.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\freertos\kernel\include\projdefs.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\freertos\kernel\include\portable.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\freertos\kernel\include\deprecated_definitions.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\freertos\kernel\portable\gcc\arm_cm33_ntz\non_secure\portmacro.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\freertos\kernel\include\mpu_wrappers.h \
- D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/app_log_config.h \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\driver\debug\inc\sl_debug_swo.h \
- e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\iostream\inc\sl_iostream_stdlib_config.h \
- ../autogen/sl_iostream_init_usart_instances.h \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\security\sl_component\sl_mbedtls_support\inc\sl_mbedtls.h \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\nvm3\inc\nvm3_default.h \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\nvm3\inc\nvm3_generic.h \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\nvm3\inc\nvm3_hal.h \
+ e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\common\inc\ecode.h \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\nvm3\inc\nvm3_default.h \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\mbedtls\include\psa\crypto.h \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\mbedtls\include\psa\crypto_platform.h \
@@ -215,7 +187,11 @@ autogen/sl_event_handler.o: ../autogen/sl_event_handler.c \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\mbedtls\include\psa\crypto_extra.h \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\mbedtls\include\psa\crypto_compat.h \
  e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\security\sl_component\sl_protocol_crypto\src\sli_protocol_crypto.h \
- ../autogen/sl_iostream_init_instances.h ../autogen/sl_bluetooth.h \
+ e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\cmsis\rtos2\include\cmsis_os2.h \
+ ../autogen/sl_bluetooth.h \
+ e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\power_manager\inc\sl_power_manager.h \
+ D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/sl_power_manager_config.h \
+ e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_slist.h \
  D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/sl_bluetooth_config.h \
  D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/sl_bluetooth_connection_config.h \
  D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/sl_bluetooth_advertiser_config.h \
@@ -320,40 +296,12 @@ e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\protocol\bluetooth\inc\sl_bt_api_co
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\sleeptimer\inc\sl_sleeptimer.h:
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_code_classification.h:
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\mpu\inc\sl_mpu.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\app\common\util\app_log\app_log.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\iostream\inc\sl_iostream.h:
-D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\autogen/sl_iostream_handles.h:
-D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\autogen/sl_iostream_init_usart_instances.h:
-D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\autogen/sl_component_catalog.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\power_manager\inc\sl_power_manager.h:
-D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/sl_power_manager_config.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_slist.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\iostream\inc\sl_iostream_uart.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\iostream\inc\sl_iostream.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\dmadrv\inc\dmadrv.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\common\inc\ecode.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\dmadrv\inc\s2_signals\dmadrv_signals.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emlib\inc\em_ldma.h:
-D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/dmadrv_config.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\cmsis\rtos2\include\cmsis_os2.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_cmsis_os2_common.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\freertos\kernel\include\freertos.h:
-D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/FreeRTOSConfig.h:
-D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\autogen/RTE_Components.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emlib\inc\em_assert.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\freertos\kernel\include\projdefs.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\freertos\kernel\include\portable.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\freertos\kernel\include\deprecated_definitions.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\freertos\kernel\portable\gcc\arm_cm33_ntz\non_secure\portmacro.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\freertos\kernel\include\mpu_wrappers.h:
-D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/app_log_config.h:
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\driver\debug\inc\sl_debug_swo.h:
-e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\iostream\inc\sl_iostream_stdlib_config.h:
-../autogen/sl_iostream_init_usart_instances.h:
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\security\sl_component\sl_mbedtls_support\inc\sl_mbedtls.h:
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\nvm3\inc\nvm3_default.h:
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\nvm3\inc\nvm3_generic.h:
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\nvm3\inc\nvm3_hal.h:
+e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\common\inc\ecode.h:
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\emdrv\nvm3\inc\nvm3_default.h:
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\mbedtls\include\psa\crypto.h:
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\mbedtls\include\psa\crypto_platform.h:
@@ -439,8 +387,11 @@ e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\mbedtls\include\ps
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\mbedtls\include\psa\crypto_extra.h:
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\util\third_party\mbedtls\include\psa\crypto_compat.h:
 e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\security\sl_component\sl_protocol_crypto\src\sli_protocol_crypto.h:
-../autogen/sl_iostream_init_instances.h:
+e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\cmsis\rtos2\include\cmsis_os2.h:
 ../autogen/sl_bluetooth.h:
+e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\service\power_manager\inc\sl_power_manager.h:
+D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/sl_power_manager_config.h:
+e:\mem_code\tool\th_iot\sdk\simplicity_sdk_5\platform\common\inc\sl_slist.h:
 D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/sl_bluetooth_config.h:
 D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/sl_bluetooth_connection_config.h:
 D:\learn\TH\ IoT\ 2024\on_class\___project_all_source\config/sl_bluetooth_advertiser_config.h:

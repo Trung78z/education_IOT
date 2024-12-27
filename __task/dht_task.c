@@ -18,13 +18,13 @@
 
 #include "FreeRTOS.h"
 #include "task.h"
-#include "app_log.h"
+
 #include "__dht_lib/dht11.h"
 #include "em_cmu.h"
 #include "dht_task.h"
 #include "uart_task.h"
 
-#define DHT_TASK_STACK_SIZE 4096
+#define DHT_STACK_SIZE 4096
 
 #define BSP_GPIO_DHT_PORT gpioPortD
 #define BSP_GPIO_DHT_PIN 3
@@ -48,12 +48,12 @@ void dht_init(void)
   TaskHandle_t xHandle = NULL;
 
   static StaticTask_t xTaskBuffer;
-  static StackType_t xStack[DHT_TASK_STACK_SIZE];
+  static StackType_t xStack[DHT_STACK_SIZE];
 
   xHandle = xTaskCreateStatic(dht_task, "dht task",
-                              DHT_TASK_STACK_SIZE,
+                              DHT_STACK_SIZE,
                               (void *)NULL,
-                              tskIDLE_PRIORITY + 6,
+                              6,
                               xStack, &xTaskBuffer);
 
   EFM_ASSERT(xHandle != NULL);
@@ -80,11 +80,15 @@ dht_task(void *arg)
     }
     else if (reading.status == DHT11_CRC_ERROR)
     {
-      // app_log("\nCheck sum error");
+      //      send_usart_data("\nCheck sum error");
+      temperature = 0;
+      humidity = 0;
     }
     else
     {
-      app_log("\nTIMEROUT");
+      //      send_usart_data("\nTIMEROUT");
+      temperature = 0;
+      humidity = 0;
     }
     vTaskDelay(pdMS_TO_TICKS(periodDHT * 1000));
   }

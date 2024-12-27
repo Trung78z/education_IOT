@@ -17,7 +17,7 @@
 #include "stdio.h"
 #include "___spi_lcd/app_lcd.h"
 #include "app.h"
-#define BLINK_TASK_STACK_SIZE 4096
+#define UART_STACK_SIZE 1024
 
 #define BSP_GPIO_LED1_PORT gpioPortD
 #define BSP_GPIO_LED1_PIN 3
@@ -32,22 +32,49 @@
 #define BSP_ENABLE_PIN 4
 #define BAUD_RATE 115200
 
-char *name__Ble = "MaiLy";
-static void gpio_init()
+char *name__Ble = "GROUP_13";
+static uint8_t periodDHT = 1;
+static uint16_t periodADV = 1;
+
+#define BUFLEN 256
+
+uint8_t buffer[BUFLEN];
+uint8_t buffer_index = 0;
+
+bool flag = false;
+
+static void uart_task(void *arg);
+
+void uart_init(void)
 {
-  CMU_ClockEnable(cmuClock_GPIO, true);
-  CMU_ClockEnable(cmuClock_USART0, true);
+  TaskHandle_t xHandle = NULL;
+
+  static StaticTask_t xTaskBuffer;
+  static StackType_t xStack[UART_STACK_SIZE];
+
+  xHandle = xTaskCreateStatic(uart_task, "uart task",
+                              UART_STACK_SIZE,
+                              (void *)NULL,
+                              tskIDLE_PRIORITY + 5,
+                              xStack, &xTaskBuffer);
+
+  EFM_ASSERT(xHandle != NULL);
+  // xTaskCreate(uart_task, "USART Task", UART_STACK_SIZE, NULL, 5, NULL);
+}
+void initGPIO(void)
+{
+  //  CMU_ClockEnable(cmuClock_USART0, true);
   GPIO_PinModeSet(BSP_TXPORT, BSP_TXPIN, gpioModePushPull, 1);
   GPIO_PinModeSet(BSP_RXPORT, BSP_RXPIN, gpioModeInput, 0);
   GPIO_PinModeSet(BSP_ENABLE_PORT, BSP_ENABLE_PIN, gpioModePushPull, 1);
 }
-
 void initUSART0(void)
 {
   USART_InitAsync_TypeDef init;
+
   init.enable = usartEnable;
   init.refFreq = 0;
-  init.baudrate = 115200;
+  init.baudrate = BAUD_RATE;
   init.oversampling = usartOVS16;
   init.databits = usartDatabits8;
   init.parity = USART_FRAME_PARITY_NONE;
@@ -60,37 +87,23 @@ void initUSART0(void)
   init.autoCsHold = 0;
   init.autoCsSetup = 0;
   init.hwFlowControl = usartHwFlowControlNone;
+
   GPIO->USARTROUTE[0].TXROUTE = (BSP_TXPORT << _GPIO_USART_TXROUTE_PORT_SHIFT) | (BSP_TXPIN << _GPIO_USART_TXROUTE_PIN_SHIFT);
   GPIO->USARTROUTE[0].RXROUTE = (BSP_RXPORT << _GPIO_USART_RXROUTE_PORT_SHIFT) | (BSP_RXPIN << _GPIO_USART_RXROUTE_PIN_SHIFT);
+
   GPIO->USARTROUTE[0].ROUTEEN = GPIO_USART_ROUTEEN_RXPEN | GPIO_USART_ROUTEEN_TXPEN;
   USART_InitAsync(USART0, &init);
 }
-
-static void uart_task(void *arg);
-void uart_init(void)
+void send_usart_data(const char *data)
 {
-  TaskHandle_t xHandle = NULL;
-
-  static StaticTask_t xTaskBuffer;
-  static StackType_t xStack[BLINK_TASK_STACK_SIZE];
-
-  xHandle = xTaskCreateStatic(uart_task, "uart task",
-                              BLINK_TASK_STACK_SIZE,
-                              (void *)NULL,
-                              tskIDLE_PRIORITY + 5,
-                              xStack, &xTaskBuffer);
-
-  EFM_ASSERT(xHandle != NULL);
+  for (size_t i = 0; i < strlen(data); i++)
+  {
+    USART_Tx(USART0, data[i]);
+  }
 }
 
-/*******************************************************************************
- * Blink task.
- ******************************************************************************/
-static uint8_t periodDHT = 1;
-static uint16_t periodADV = 1;
 
-// static const char *message = "Hello, UART!\r\n";
-// static const char *message_ok = "OK\r\n";
+
 void handle_command(uint8_t *command)
 {
 
@@ -227,7 +240,8 @@ void handle_command(uint8_t *command)
     int temperature = data_temperature();
     int humidity = data_humidity();
     char message2[100];
-    size_t len = sprintf(message2, "Temperature: %dC, Humidity: %d%%\r\n", temperature, humidity);
+    size_t len = sprintf(message2, "Temperature: %dC, Humidity: %d%%\r\n",
+                         temperature, humidity);
     for (size_t i = 0; i < len; i++)
     {
       while (!(USART0->STATUS & USART_STATUS_TXBL))
@@ -248,18 +262,16 @@ void handle_command(uint8_t *command)
 static void uart_task(void *arg)
 {
   (void)arg;
-
-  gpio_init();
+  initGPIO();
   initUSART0();
+  send_usart_data("\nStarted\n");
   uint8_t command[1];
   while (1)
   {
-
     while (!(USART0->STATUS & USART_STATUS_RXDATAV))
     {
     }
     command[0] = USART_Rx(USART0);
-
     handle_command(command);
   }
 }

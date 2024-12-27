@@ -11,7 +11,7 @@
 #include "___spi_lcd/app_lcd.h"
 #include "uart_task.h"
 #include "dht_task.h"
-#define LCD_TASK_STACK_SIZE 1024
+#define LCD_STACK_SIZE 2048
 
 static int hours = 23;
 static int minutes = 59;
@@ -42,12 +42,12 @@ void lcd_task_init(void)
   TaskHandle_t xHandle = NULL;
 
   static StaticTask_t xTaskBuffer;
-  static StackType_t xStack[LCD_TASK_STACK_SIZE];
+  static StackType_t xStack[LCD_STACK_SIZE];
 
   xHandle = xTaskCreateStatic(lcd_task, "lcd task",
-                              LCD_TASK_STACK_SIZE,
+                              LCD_STACK_SIZE,
                               (void *)NULL,
-                              tskIDLE_PRIORITY + 5,
+                              5,
                               xStack, &xTaskBuffer);
 
   EFM_ASSERT(xHandle != NULL);

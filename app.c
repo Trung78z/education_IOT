@@ -8,7 +8,7 @@
 #include "sl_bluetooth.h"
 #include "gatt_db.h"
 #include "app.h"
-#include "app_log.h"
+#include"stdio.h"
 #include "app_timer.h"
 #include "em_cmu.h"
 #include "em_timer.h"
@@ -78,11 +78,17 @@ void update_ble_task_init(void)
 
 SL_WEAK void app_init(void)
 {
-  display_init();
-  dht_init();
+
   uart_init();
+
+  vTaskDelay(pdMS_TO_TICKS(2 * 1000));
+  display_init();
   lcd_task_init();
+  dht_init();
+
+
   update_ble_task_init();
+
   //  sl_status_t sc;
   //  sc = app_timer_start(&update_timer, 2 * 1000, // ms
   //                       update_timer_cb,
@@ -107,7 +113,10 @@ void updateName(char *name)
 
   fill_adv_packet(&sData, FLAG, COMPANY_ID, datapayload, name);
   start_adv(&sData, advertising_set_handle);
-  app_log("BLE name updated to: %s\r\n", name__Ble);
+
+  char response[64];
+  snprintf(response, sizeof(response), "BLE name updated to: %s\r\n",name__Ble);
+  send_usart_data(response);
   sc = sl_bt_legacy_advertiser_start(
       advertising_set_handle, sl_bt_advertiser_connectable_scannable);
   app_assert_status(sc);
@@ -131,7 +140,10 @@ void sl_bl_timing_set_cb(uint16_t new_min_interval, uint16_t new_max_interval)
   sc = sl_bt_legacy_advertiser_start(
       advertising_set_handle, sl_bt_advertiser_connectable_scannable);
   app_assert_status(sc);
-  app_log("Advertising timing updated: min = %d, max = %d\n", new_min_interval, new_max_interval);
+
+  char response[64];
+  snprintf(response, sizeof(response),"Advertising timing updated: min = %d, max = %d\n", new_min_interval, new_max_interval);
+  send_usart_data(response);
 }
 
 void sl_bt_on_event(sl_bt_msg_t *evt)
@@ -180,10 +192,10 @@ void sl_bt_on_event(sl_bt_msg_t *evt)
     app_assert_status(sc);
 
     fill_adv_packet(&sData, FLAG, COMPANY_ID, datapayload, name__Ble);
-    app_log("fill_adv_packet completed\r\n");
+    send_usart_data("fill_adv_packet completed\r\n");
 
     start_adv(&sData, advertising_set_handle);
-    app_log("Started advertising\r\n");
+    send_usart_data("Started advertising\r\n");
 
     break;
 

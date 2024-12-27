@@ -29,7 +29,6 @@ toolchain_settings: []
 component:
 - {id: EFR32MG21A020F1024IM32}
 - {id: app_assert}
-- {id: app_log}
 - {id: bluetooth_feature_connection}
 - {id: bluetooth_feature_gatt}
 - {id: bluetooth_feature_gatt_server}
@@ -47,8 +46,6 @@ component:
 - {id: gatt_configuration}
 - {id: gatt_service_device_information}
 - {id: in_place_ota_dfu}
-- instance: [vcom]
-  id: iostream_usart
 - {id: mpu}
 - {id: rail_util_pti}
 - {id: sl_system}
