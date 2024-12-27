@@ -16,13 +16,13 @@
  *
  ******************************************************************************/
 
+#include <__task/usart_task.h>
 #include "FreeRTOS.h"
 #include "task.h"
 
 #include "__dht_lib/dht11.h"
 #include "em_cmu.h"
 #include "dht_task.h"
-#include "uart_task.h"
 
 #define DHT_STACK_SIZE 4096
 

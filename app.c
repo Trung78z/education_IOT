@@ -1,7 +1,7 @@
+#include <__task/usart_task.h>
 #include "___adv/custom_adv.h"
 #include "___spi_lcd/app_lcd.h"
 #include "__task/dht_task.h"
-#include "__task/uart_task.h"
 #include "__task/lcd_task.h"
 #include "em_common.h"
 #include "app_assert.h"
