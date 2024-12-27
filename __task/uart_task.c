@@ -1,11 +1,11 @@
 /*
- * uart_task.c
+ * usart_task.c
  *
  *  Created on: Dec 23, 2024
  *      Author: Trung
  */
 
-#include "uart_task.h"
+#include "usart_task.h"
 
 #include "FreeRTOS.h"
 #include "task.h"
@@ -17,7 +17,7 @@
 #include "stdio.h"
 #include "___spi_lcd/app_lcd.h"
 #include "app.h"
-#define UART_STACK_SIZE 1024
+#define UART_STACK_SIZE 2048
 
 #define BSP_GPIO_LED1_PORT gpioPortD
 #define BSP_GPIO_LED1_PIN 3
@@ -43,23 +43,23 @@ uint8_t buffer_index = 0;
 
 bool flag = false;
 
-static void uart_task(void *arg);
+static void usart_task(void *arg);
 
-void uart_init(void)
+void usart_init(void)
 {
   TaskHandle_t xHandle = NULL;
 
   static StaticTask_t xTaskBuffer;
   static StackType_t xStack[UART_STACK_SIZE];
 
-  xHandle = xTaskCreateStatic(uart_task, "uart task",
+  xHandle = xTaskCreateStatic(usart_task, "uart task",
                               UART_STACK_SIZE,
                               (void *)NULL,
                               tskIDLE_PRIORITY + 5,
                               xStack, &xTaskBuffer);
 
   EFM_ASSERT(xHandle != NULL);
-  // xTaskCreate(uart_task, "USART Task", UART_STACK_SIZE, NULL, 5, NULL);
+  // xTaskCreate(usart_task, "USART Task", UART_STACK_SIZE, NULL, 5, NULL);
 }
 void initGPIO(void)
 {
@@ -101,8 +101,6 @@ void send_usart_data(const char *data)
     USART_Tx(USART0, data[i]);
   }
 }
-
-
 
 void handle_command(uint8_t *command)
 {
@@ -259,7 +257,7 @@ void handle_command(uint8_t *command)
   }
 }
 
-static void uart_task(void *arg)
+static void usart_task(void *arg)
 {
   (void)arg;
   initGPIO();

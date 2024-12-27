@@ -30,9 +30,10 @@ static int currentLine = 0;
  **************************   GLOBAL FUNCTIONS   *******************************
  ******************************************************************************/
 
-/***************************************************************************/ /**
-                                                                               * Initialize example.
-                                                                               ******************************************************************************/
+/***************************************************************************/
+/**
+ * Initialize example.
+ ******************************************************************************/
 
 void display_init(void)
 {
@@ -78,7 +79,7 @@ void display_init(void)
   GLIB_drawStringOnLine(&glibContext, "DHT11_TASK", 7,
                         GLIB_ALIGN_CENTER, 5, 5,
                         true);
-  GLIB_drawStringOnLine(&glibContext, "Period",10,
+  GLIB_drawStringOnLine(&glibContext, "Period", 10,
                         GLIB_ALIGN_CENTER, 5, 5,
                         true);
 }
@@ -100,7 +101,6 @@ void memlcd_dht_app_init(uint8_t temperature, uint8_t humidity)
   char timeString[24];
   sprintf(timeString, "Temp: %d - Humid: %d", temperature, humidity);
 
-
   GLIB_drawStringOnLine(&glibContext, timeString, 9, GLIB_ALIGN_LEFT,
                         5, 5,
                         true);
@@ -113,13 +113,11 @@ void memlcd_period_app_init(uint8_t periodDHT, uint8_t periodADV)
   char timeString[24];
   sprintf(timeString, "DHT: %ds - ADV: %ds", periodDHT, periodADV);
 
-
   GLIB_drawStringOnLine(&glibContext, timeString, 11, GLIB_ALIGN_LEFT,
                         5, 5,
                         true);
   DMD_updateDisplay();
 }
-
 
 /**
  * Ticking function.

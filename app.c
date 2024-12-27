@@ -8,7 +8,7 @@
 #include "sl_bluetooth.h"
 #include "gatt_db.h"
 #include "app.h"
-#include"stdio.h"
+#include "stdio.h"
 #include "app_timer.h"
 #include "em_cmu.h"
 #include "em_timer.h"
@@ -79,13 +79,12 @@ void update_ble_task_init(void)
 SL_WEAK void app_init(void)
 {
 
-  uart_init();
+  usart_init();
 
   vTaskDelay(pdMS_TO_TICKS(2 * 1000));
   display_init();
   lcd_task_init();
   dht_init();
-
 
   update_ble_task_init();
 
@@ -115,7 +114,7 @@ void updateName(char *name)
   start_adv(&sData, advertising_set_handle);
 
   char response[64];
-  snprintf(response, sizeof(response), "BLE name updated to: %s\r\n",name__Ble);
+  snprintf(response, sizeof(response), "BLE name updated to: %s\r\n", name__Ble);
   send_usart_data(response);
   sc = sl_bt_legacy_advertiser_start(
       advertising_set_handle, sl_bt_advertiser_connectable_scannable);
@@ -142,7 +141,7 @@ void sl_bl_timing_set_cb(uint16_t new_min_interval, uint16_t new_max_interval)
   app_assert_status(sc);
 
   char response[64];
-  snprintf(response, sizeof(response),"Advertising timing updated: min = %d, max = %d\n", new_min_interval, new_max_interval);
+  snprintf(response, sizeof(response), "Advertising timing updated: min = %d, max = %d\n", new_min_interval, new_max_interval);
   send_usart_data(response);
 }
 
