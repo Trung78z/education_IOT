@@ -32,9 +32,6 @@
 #define BSP_ENABLE_PIN 4
 #define BAUD_RATE 115200
 
-
-
-uint8_t command[1];
 char *name__Ble = "MaiLy";
 static void gpio_init()
 {
@@ -182,7 +179,7 @@ void handle_command(uint8_t *command)
     }
     break;
 
-    case '4': // Đổi tên thiết bị quảng bá
+  case '4': // Đổi tên thiết bị quảng bá
     name__Ble = "HelloMaiLy";
     updateName(name__Ble);
     char messagecase5[100];
@@ -199,29 +196,29 @@ void handle_command(uint8_t *command)
     }
     break;
 
-    case '5': // Nháy LED 5 lần
+  case '5': // Nháy LED 5 lần
   {
-      char messagecase6[100];
-      sprintf(messagecase6, "OK, LED blinking 5 times\r\n");
-      for (size_t i = 0; i < strlen(messagecase6); i++)
+    char messagecase6[100];
+    sprintf(messagecase6, "OK, LED blinking 5 times\r\n");
+    for (size_t i = 0; i < strlen(messagecase6); i++)
+    {
+      while (!(USART0->STATUS & USART_STATUS_TXBL))
       {
-          while (!(USART0->STATUS & USART_STATUS_TXBL))
-          {
-              // Chờ đến khi TX Buffer trống
-          }
-
-          USART_Tx(USART0, messagecase6[i]); // Gửi ký tự qua UART
-          vTaskDelay(pdMS_TO_TICKS(10));
+        // Chờ đến khi TX Buffer trống
       }
 
-      // Nháy LED 5 lần
-      for (int i = 0; i < 5; i++)
-      {
-          GPIO_PinOutSet(BSP_GPIO_LED0_PORT, 2);
-          vTaskDelay(pdMS_TO_TICKS(500));
-          GPIO_PinOutClear(BSP_GPIO_LED0_PORT, 2);
-          vTaskDelay(pdMS_TO_TICKS(500));
-      }
+      USART_Tx(USART0, messagecase6[i]); // Gửi ký tự qua UART
+      vTaskDelay(pdMS_TO_TICKS(10));
+    }
+
+    // Nháy LED 5 lần
+    for (int i = 0; i < 5; i++)
+    {
+      GPIO_PinOutSet(BSP_GPIO_LED0_PORT, 2);
+      vTaskDelay(pdMS_TO_TICKS(500));
+      GPIO_PinOutClear(BSP_GPIO_LED0_PORT, 2);
+      vTaskDelay(pdMS_TO_TICKS(500));
+    }
   }
   break;
 
@@ -254,14 +251,14 @@ static void uart_task(void *arg)
 
   gpio_init();
   initUSART0();
-
+  uint8_t command[1];
   while (1)
   {
 
     while (!(USART0->STATUS & USART_STATUS_RXDATAV))
     {
     }
-    *command = USART_Rx(USART0);
+    command[0] = USART_Rx(USART0);
 
     handle_command(command);
   }
