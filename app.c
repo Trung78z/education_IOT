@@ -16,9 +16,6 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
-volatile uint32_t data_buffer[100];
-volatile uint32_t index = 0;
-
 CustomAdv_t sData; // Our custom advertising data stored here
 
 // static app_timer_t update_timer;
@@ -113,7 +110,7 @@ void updateName(char *name)
   fill_adv_packet(&sData, FLAG, COMPANY_ID, datapayload, name);
   start_adv(&sData, advertising_set_handle);
 
-  char response[64];
+  char response[255];
   snprintf(response, sizeof(response), "BLE name updated to: %s\r\n", name__Ble);
   send_usart_data(response);
   sc = sl_bt_legacy_advertiser_start(
@@ -140,8 +137,8 @@ void sl_bl_timing_set_cb(uint16_t new_min_interval, uint16_t new_max_interval)
       advertising_set_handle, sl_bt_advertiser_connectable_scannable);
   app_assert_status(sc);
 
-  char response[64];
-  snprintf(response, sizeof(response), "Advertising timing updated: min = %d, max = %d\n", new_min_interval, new_max_interval);
+  char response[255];
+  snprintf(response, sizeof(response), "Advertising timing updated: min = %d, max = %d\r\n",  new_min_interval, new_max_interval);
   send_usart_data(response);
 }
 
